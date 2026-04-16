@@ -4,35 +4,35 @@ import { customElement, property, state } from 'lit/decorators.js';
 import { HomeAssistant, LovelaceCard, LovelaceCardConfig } from 'custom-card-helpers';
 import yaml from 'js-yaml';
 
-import { SankeyConfigFileCardConfig } from './types';
+import { ConfigWrapperCardConfig } from './types';
 import { version } from '../package.json';
 
 /* eslint no-console: 0 */
 console.info(
-  `%c sankey-configfile-card %c v${version} `,
+  `%c config-wrapper-card %c v${version} `,
   'color: white; font-weight: bold; background: #2c5c8c',
   'color: #2c5c8c; font-weight: bold; background: white',
 );
 
 (window as any).customCards = (window as any).customCards || [];
 (window as any).customCards.push({
-  type: 'sankey-configfile-card',
-  name: 'Sankey Config File Card',
+  type: 'config-wrapper-card',
+  name: 'Config Wrapper Card',
   description: 'Wrapper card that loads any card configuration from an external YAML file',
-  documentationURL: 'https://github.com/jebeke65/sankey-configfile-card',
+  documentationURL: 'https://github.com/jebeke65/config-wrapper-card',
 });
 
-const CARD_TAG = 'sankey-configfile-card';
+const CARD_TAG = 'config-wrapper-card';
 
 @customElement(CARD_TAG)
-export class SankeyConfigFileCard extends LitElement {
+export class ConfigWrapperCard extends LitElement {
   @property({ attribute: false }) public hass?: HomeAssistant;
 
-  @state() private _rawConfig?: SankeyConfigFileCardConfig;
+  @state() private _rawConfig?: ConfigWrapperCardConfig;
   @state() private _innerCard?: LovelaceCard;
   @state() private _error?: string;
 
-  public async setConfig(config: SankeyConfigFileCardConfig): Promise<void> {
+  public async setConfig(config: ConfigWrapperCardConfig): Promise<void> {
     if (!config || typeof config !== 'object') {
       throw new Error('Invalid configuration');
     }
@@ -52,7 +52,7 @@ export class SankeyConfigFileCard extends LitElement {
 
     if (config.config_url) {
       this._loadExternalConfig().catch(err => {
-        console.error('sankey-configfile-card: config_url load failed', err);
+        console.error('config-wrapper-card: config_url load failed', err);
         this._error = String(err?.message ?? err);
       });
     }

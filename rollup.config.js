@@ -5,9 +5,9 @@ import json from '@rollup/plugin-json';
 import terser from '@rollup/plugin-terser';
 
 export default {
-  input: 'src/sankey-configfile-card.ts',
+  input: 'src/config-wrapper-card.ts',
   output: {
-    file: 'dist/sankey-configfile-card.js',
+    file: 'dist/config-wrapper-card.js',
     format: 'es',
     sourcemap: false,
   },

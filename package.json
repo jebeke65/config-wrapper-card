@@ -1,5 +1,5 @@
 {
-  "name": "sankey-configfile-card",
+  "name": "config-wrapper-card",
   "version": "0.1.0",
   "type": "module",
   "description": "Home Assistant Lovelace wrapper card that loads any card configuration from an external YAML file",
@@ -12,8 +12,8 @@
     "yaml",
     "config"
   ],
-  "module": "sankey-configfile-card.js",
-  "repository": "git@github.com:jebeke65/sankey-configfile-card.git",
+  "module": "config-wrapper-card.js",
+  "repository": "git@github.com:jebeke65/config-wrapper-card.git",
   "author": "jebeke65",
   "license": "MIT",
   "dependencies": {
